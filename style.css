@@ -296,7 +296,7 @@ nav img{
 }
 
 .text-box h1 {
-    font-size: 62px;
+    font-size: clamp(28px, 6vw, 62px);
 }
 
 .text-box p{
@@ -336,6 +336,17 @@ nav img{
 
 @media (max-width: 700px) {
 
+    #image-track {
+        top: 65%;
+        gap: 2vmin;
+    }
+
+    #image-track > .image {
+        width: 40vmin;
+        height: 60vmin;
+    }
+
+
     .nav-links ul {
         display: flex;
         flex-direction: column; /* stack links vertically */
@@ -345,9 +356,10 @@ nav img{
     }
 
         .nav-links ul li {
-            display: block; /* make each link full width */
-            padding: 8px 0; /* comfortable touch area */
-            top: 0; /* remove previous top offset */
+            list-style: none;
+            display: inline-block;
+            padding: 8px 12px;
+            position: relative;
         }
 
     .nav-links {
@@ -366,3 +378,30 @@ nav img{
             color: #fff;
         }
     }
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav img {
+        width: 110px;
+    }
+
+    .text-box {
+        width: 90%;
+        top: 45%;
+    }
+
+    .text-box p {
+        font-size: 12px;
+    }
+
+    .hero-btn {
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+
+}
