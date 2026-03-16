@@ -337,6 +337,9 @@ nav img{
 @media (max-width: 700px) {
 
     #image-track {
+        display: flex;
+        overflow-x: auto;
+        width: 100%;
         top: 65%;
         gap: 2vmin;
     }
@@ -368,6 +371,7 @@ nav img{
         width: 100%; /* full width */
         height: auto; /* shrink to content */
         padding: 0 1rem; /* horizontal spacing */
+        padding-top: 10px; /* space from top */
         text-align: center; /* center links */
         z-index: 1;
     }
@@ -404,4 +408,8 @@ nav img{
         font-size: 12px;
     }
 
+    .header-image img {
+        max-height: 250px;
+        object-fit: cover;
+    }
 }
