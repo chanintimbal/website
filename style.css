@@ -325,6 +325,14 @@ nav img{
     transition: 0.8s;
 }
 
+.profile-pic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5%;
+    margin-bottom: 20px;
+}
+
 
 @media (max-width: 700px) {
 
@@ -357,4 +365,4 @@ nav img{
             font-size: 16px;
             color: #fff;
         }
-
+    }
