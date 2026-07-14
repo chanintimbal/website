@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>ʻŌlelo noʻeau</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100dvh;
+            overflow: hidden;
+        }
+
+        body {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(images/background-h.jpeg) no-repeat center/cover;
+            background-position-y: -9.6vh;
+        }
+
+        .hero {
+            margin: 4vh;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            font-family: 'inter', 'sans-serif';
+            font-weight: bold;
+            box-sizing: border-box;
+            padding: 20px;
+            
+        }
+
+        .hero h1 {
+            margin: 0;
+            padding-right: 10vh;
+            color: white;
+            font-size: 10vh;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero h2 {
+            padding-right: 9vh;
+            margin: 0;
+            color: white;
+            font-size: 4vh;
+            font-weight: normal;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+
+        }
+
+        .proverb-box {
+            margin-top: 16vh;
+            margin-right: 9vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            text-align: center;  
+            gap: 12px; 
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9); 
+            padding: 30px 40px;              
+            border-radius: 12px;             
+            max-width: 100%;                  
+            width: 900px;                    
+            box-sizing: border-box;          
+            backdrop-filter: blur(4px);      
+            transition: opacity 0.3s ease;
+        }
+
+        .proverb-box .hawaiian {
+            font-size: clamp(3rem, 3.5vh, 2.2rem);
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .proverb-box .translation {
+            font-size: clamp(1.1rem, 2.8vh, 1.5rem);
+            font-style: italic;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .proverb-box .meaning {
+            font-size: clamp(0.9rem, 2.2vh, 1.2rem);
+            margin: 0;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Interactive Navigation Button */
+        .next-btn {
+            margin-top: 25px;
+            margin-right: 9vh;
+            padding: 10px 24px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .next-btn:hover {
+            background: black;
+            color: white;
+            text-shadow: none;
+        }
+        
+        .next-btn:active {
+            transform: scale(0.96);
+        }
+
+        .site-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 20px;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: clamp(0.75rem, 1.5vh, 0.9rem);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            background: linear-gradient(transparent, rgba(0,0,0,0.5)); 
+        }
+
+        .site-footer p {
+            margin: 4px 0;
+        }
+
+        .site-footer p:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <h1>ʻŌlelo noʻeau</h1>
+        <h2>Traditional proverbs or wise sayings of the Hawaiian people</h2>
+
+        <div class="proverb-box" id="proverbContainer">
+            <p class="hawaiian" id="hawaiianText"></p>
+            <p class="translation" id="translationText"></p>
+            <p class="meaning" id="meaningText"></p>
+        </div>
+
+        <button class="next-btn" onclick="nextProverb()">Next Proverb →</button>
+    </div>
+
+    <footer class="site-footer">
+        <p>Created by Chanin Timbal | &copy; 2026 All Rights Reserved</p>
+        <p>This website was created as an educational project,
+            the proverbs provided were gathered from the work of Mary Kawvena Pukui.</p>
+        <p>These proverbs are shared for educational and cultural appreciation purposes.</p>
+        <p>No AI was used for the creation of this website</p>
+    </footer>
+
+    <script>
+        const proverbs = [
+            {
+                hawaiian: "He huewai ola ke kanaka na Kāne.",
+                translation: "People are Kāne's living water gourd.",
+                meaning: "(Water is life and Kāne is the keeper of it.)"
+            },
+            {
+                hawaiian: "ʻAʻohe hana nui ke alu ʻia.",
+                translation: "No task is too big when done together by all.",
+                meaning: "(Unity brings success. When everyone helps, heavy burdens become light.)"
+            },
+            {
+                hawaiian: "ʻAʻohe pau ka ʻike i ka hālau hoʻokahi.",
+                translation: "All knowledge is not taught in one school.",
+                meaning: "(One can learn from many sources. Remain open-minded and humble; no one knows everything.)"
+            },
+            {
+                hawaiian: "Ua ola loko i ke aloha.",
+                translation: "Love gives life within.",
+                meaning: "(Love is imperative to mental and physical well-being; it heals, nurtures, and sustains us.)"
+            },
+            {
+                hawaiian: "E hoʻomau e ka hoa, mai hāʻawipio.",
+                translation: "Persist my friend, do not give up.",
+                meaning: "(A powerful reminder to hold fast, keep moving forward, and stay resilient through challenges.)"
+            },
+            {
+                hawaiian: "I ka ʻōlelo nō ke ola, i ka ʻōlelo nō ka make.",
+                translation: "In speech is life, in speech is death.",
+                meaning: "(Words carry immense power. They have the ability to heal and build up, or wound and destroy.)"
+            },
+            {
+                hawaiian: "Mohala i ka wai ka maka o ka pua.",
+                translation: "Unfolded by the water are the faces of the flowers.",
+                meaning: "(People thrive, bloom, and unfold their potential when they are treated with kindness, care, and love.)"
+            },
+            {
+                hawaiian: "E aloha kekahi i kekahi.",
+                translation: "Love one another.",
+                meaning: "(A core pillar of Hawaiian values—living a life rooted in mutual respect, empathy, and unconditional aloha.)"
+            },
+            {
+                hawaiian: "E hāmau ka leo, e hana ka lima.",
+                translation: "Silence the voice, let the hands work.",
+                meaning: "(Actions speak louder than words. Instead of just talking about a problem or boasting, put your energy into doing the work.)"
+            },
+            {
+                hawaiian: "He aliʻi ka ʻāina, he kauwā ke kanaka.",
+                translation: "The land is a chief; man is its servant.",
+                meaning: "(Land has a higher status than humans. If we care for the land, it sustains us; if we abuse it, we suffer.)"
+            },
+            {
+                hawaiian: "Kuʻu ewe, kuʻu piko, kuʻu iwi, kuʻu koko.",
+                translation: "My lineage, my umbilical cord, my bones, my blood.",
+                meaning: "(An expression of deep reverence for one's ancestors, family roots, identity, and cultural heritage.)"
+            }
+        ];
+
+        let currentIndex = 0;
+
+        function updateProverb() {
+            const container = document.getElementById('proverbContainer');
+            
+            container.style.opacity = 0;
+            
+            setTimeout(() => {
+                document.getElementById('hawaiianText').innerText = proverbs[currentIndex].hawaiian;
+                document.getElementById('translationText').innerText = proverbs[currentIndex].translation;
+                document.getElementById('meaningText').innerText = proverbs[currentIndex].meaning;
+                container.style.opacity = 1;
+            }, 200);
+        }
+
+        function nextProverb() {
+            currentIndex = (currentIndex + 1) % proverbs.length;
+            updateProverb();
+        }
+
+
+        updateProverb();
+    </script>
+</body>
+</html>
