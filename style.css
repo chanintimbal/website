@@ -62,13 +62,14 @@ body {
     user-select: none; /* -- Prevent image highlighting -- */
 }
 
-    #image-track > .image {
-        width: 30vmin;
-        height: 46vmin;
-        object-fit: cover;
-        object-position: 100% center;
-    }
+#image-track > .image {
+    width:30vmin;
+    height:46vmin;
+    object-fit: cover;
+    object-position: 100% center;
 
+
+}
 
 .header {
     width: 100%;

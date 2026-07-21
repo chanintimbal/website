@@ -31,9 +31,15 @@ const handleOnMove = e => {
     }, { duration: 1200, fill: "forwards" });
 
     for (const image of track.getElementsByClassName("image")) {
+
+        let multiplier = image.classList.contains("image-bjj") ? 1.8 : 1;
+    
         image.animate({
-            objectPosition: `${100 + nextPercentage}%`
-        }, { duration: 1200, fill: "forwards" });
+            objectPosition: `${70 + (nextPercentage * multiplier)}% center`
+        }, { 
+            duration:1200,
+            fill:"forwards"
+        });
     }
 }
 
