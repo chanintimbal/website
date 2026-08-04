@@ -1,7 +1,7 @@
 const track = document.getElementById("image-track");
 
-// Manually set initial offset (tweak this until it looks centered)
-const initialOffset = -40; // percentage, try -40%, -45%, etc.
+// Manually set initial offset
+const initialOffset = -40;
 track.style.transform = `translateX(${initialOffset}%)`;
 
 // Store in dataset for dragging
@@ -43,7 +43,6 @@ const handleOnMove = e => {
     }
 }
 
-/* -- Had to add extra lines for touch events -- */
 
 window.onmousedown = e => handleOnDown(e);
 

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Large Modern Card Slider</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Keeps arrows outside the card */
+.slider-wrapper {
+    position: relative;
+    width: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card window */
+.card-container {
+    width: 1000px;
+    height: 700px;
+    overflow: hidden;
+    border-radius: 24px;
+    box-shadow: 0 25px 60px rgba(255,255,255,0.1);
+}
+
+/* Sliding track */
+.slider {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(.22,1,.36,1);
+}
+
+/* Individual cards */
+.card {
+    min-width: 100%;
+    height: 700px;
+    background: #f2f2f2;
+    color: #111;
+    padding: 60px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.card p {
+    font-size: 1.4rem;
+    line-height: 1.8;
+}
+
+/* Arrow buttons */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 12px;
+
+    opacity: .55;
+    transition: .25s ease;
+    z-index: 10;
+}
+
+.nav-btn:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.15);
+}
+
+.nav-btn:active {
+    transform: translateY(-50%) scale(.95);
+}
+
+.left {
+    left: -80px;
+}
+
+.right {
+    right: -80px;
+}
+
+.nav-btn svg {
+    width: 45px;
+    height: 45px;
+}
+
+
+/* Makes it fit smaller screens */
+@media (max-width: 1000px) {
+    .slider-wrapper,
+    .card-container {
+        width: 85vw;
+    }
+
+    .card {
+        min-width: 85vw;
+    }
+
+    .card-container {
+        height: 50vh;
+    }
+
+    .card {
+        height: 50vh;
+    }
+
+    .left {
+        left: -55px;
+    }
+
+    .right {
+        right: -55px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+    <div class="slider-wrapper">
+
+        <button id="prevBtn" class="nav-btn left">
+            <svg viewBox="0 0 24 24" fill="none">
+                <path d="M15 18L9 12L15 6"
+                    stroke="white"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+        </button>
+
+
+        <div class="card-container">
+
+            <div class="slider">
+
+                <div class="card">
+                    <h2>Card One</h2>
+                    <img src="images/airforce_pic.jpg">
+                    <p>
+                        A larger card design with a clean modern layout.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h2>Card Two</h2>
+                    <p>
+                        Smooth sliding animations powered by CSS transforms.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h2>Card Three</h2>
+                    <p>
+                        Responsive sizing keeps the slider working on different screens.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button id="nextBtn" class="nav-btn right">
+            <svg viewBox="0 0 24 24" fill="none">
+                <path d="M9 18L15 12L9 6"
+                    stroke="white"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+        </button>
+
+    </div>
+
+
+    <script>
+    const slider = document.querySelector(".slider");
+    const cards = document.querySelectorAll(".card");
+
+    const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+
+    let current = 0;
+
+    function updateSlider() {
+        const cardWidth = document.querySelector(".card-container").offsetWidth;
+        slider.style.transform = `translateX(-${current * cardWidth}px)`;
+    }
+
+    nextBtn.addEventListener("click", () => {
+        current = (current + 1) % cards.length;
+        updateSlider();
+    });
+
+    prevBtn.addEventListener("click", () => {
+        current = (current - 1 + cards.length) % cards.length;
+        updateSlider();
+    });
+
+    window.addEventListener("resize", updateSlider);
+    </script>
+
+</body>
+</html>
