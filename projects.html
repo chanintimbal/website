@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Large Modern Card Slider</title>
+<title>Chanin's Projects</title>
 
 <style>
 * {
@@ -62,11 +62,23 @@ body {
 .card h2 {
     font-size: 3rem;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .card p {
     font-size: 1.4rem;
     line-height: 1.8;
+}
+
+.card:first-child {
+    justify-content: flex-start;
+}
+
+.card:first-child img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    margin-top: 10px;
 }
 
 /* Arrow buttons */
